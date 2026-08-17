@@ -1,0 +1,83 @@
+---
+const { title } = Astro.props;
+---
+<html lang="sk">
+	<head>
+		<meta charset="utf-8" />
+		<title>{title} | Tarot</title>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+	</head>
+	<body class="min-h-screen text-white font-sans selection:bg-purple-500/30">
+		
+		<!-- Fixné pozadie (aby sa pri scrollovaní nehýbalo) -->
+		<div class="fixed inset-0 -z-10 bg-main-gradient overflow-hidden">
+			<!-- Vrstva s hviezdami -->
+			<div class="stars-container opacity-50"></div>
+		</div>
+
+		<!-- Navigácia -->
+		<nav class="flex justify-center gap-12 p-8 bg-black/10 backdrop-blur-sm sticky top-0 z-50">
+			<a href="/tarot/" class="font-serif tracking-widest hover:text-purple-400 transition-colors uppercase text-sm">Domov</a>
+			<a href="/tarot/karty" class="font-serif tracking-widest hover:text-purple-400 transition-colors uppercase text-sm">Moje Karty</a>
+		</nav>
+
+		<!-- Hlavný obsah -->
+		<main class="max-w-6xl mx-auto p-6 md:p-12">
+			<slot />
+		</main>
+
+		<!-- Footer -->
+		<footer class="text-center py-16 text-white/20 text-xs tracking-[0.2em] uppercase font-light">
+			<p>&copy; {new Date().getFullYear()} Moja Cesta Životom. Všetky práva vyhradené.</p>
+		</footer>
+
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		/* Farby: Námornícka modrá a Hlboká fialová */
+		--color-navy: #020617;
+		--color-purple: #2e1065;
+	}
+
+	body {
+		margin: 0;
+		background-color: var(--color-navy);
+		font-family: 'Inter', sans-serif;
+	}
+
+	h1, h2, h3, .font-serif {
+		font-family: 'Cinzel', serif;
+	}
+
+	/* Radiálny gradient: Fialová v strede, Navy na okrajoch */
+	.bg-main-gradient {
+		background: radial-gradient(circle at center, var(--color-purple) 0%, var(--color-navy) 100%);
+	}
+
+	/* CSS Hviezdy */
+	.stars-container {
+		position: absolute;
+		width: 200%;
+		height: 200%;
+		background-image: 
+			radial-gradient(1px 1px at 20px 30px, white, rgba(0,0,0,0)),
+			radial-gradient(1.5px 1.5px at 100px 150px, white, rgba(0,0,0,0)),
+			radial-gradient(1px 1px at 250px 50px, white, rgba(0,0,0,0)),
+			radial-gradient(1.5px 1.5px at 400px 350px, rgba(255,255,255,0.7), rgba(0,0,0,0)),
+			radial-gradient(1px 1px at 500px 10px, white, rgba(0,0,0,0)),
+			radial-gradient(1px 1px at 700px 450px, rgba(255,255,255,0.8), rgba(0,0,0,0));
+		background-repeat: repeat;
+		background-size: 800px 800px;
+		animation: drift 100s linear infinite;
+	}
+
+	@keyframes drift {
+		from { transform: translateY(0); }
+		to { transform: translateY(-500px); }
+	}
+</style>

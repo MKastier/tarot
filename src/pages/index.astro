@@ -1,17 +1,78 @@
 ---
-
+import MainLayout from '../layouts/MainLayout.astro';
 ---
+<MainLayout title="Domov">
+	<!-- H3 Nadpis v strede -->
+	<header class="text-center mt-8 mb-24">
+		<h3 class="text-3xl md:text-4xl tracking-[0.3em] font-light text-purple-100/90 uppercase">
+			Moja cesta životom
+		</h3>
+		<div class="h-[1px] w-48 bg-white/10 mx-auto mt-6"></div>
+	</header>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+	<!-- Tri stĺpce -->
+	<div class="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 items-start">
+		
+		<!-- 1. Ročné výklady -->
+		<div class="flex flex-col items-center">
+			<h2 class="text-lg tracking-widest uppercase mb-4 font-bold">Ročné výklady</h2>
+			<div class="w-full h-[3px] bg-red-600 shadow-[0_0_10px_rgba(220,38,38,0.5)] mb-8"></div>
+			
+			<div class="flex flex-col gap-6 text-xl font-light text-purple-200/80">
+				<a href="/tarot/rocne/2024" class="hover:text-white hover:translate-x-2 transition-all">2024</a>
+				<a href="/tarot/rocne/2025" class="hover:text-white hover:translate-x-2 transition-all">2025</a>
+				<a href="/tarot/rocne/2026" class="hover:text-white hover:translate-x-2 transition-all">2026</a>
+			</div>
+		</div>
+
+		<!-- 2. Mesačné (s vyrolovacími rokmi) -->
+		<div class="flex flex-col items-center">
+			<h2 class="text-lg tracking-widest uppercase mb-4 font-bold">Mesačné</h2>
+			<div class="w-full h-[3px] bg-red-600 shadow-[0_0_10px_rgba(220,38,38,0.5)] mb-8"></div>
+			
+			<div class="w-full space-y-4">
+				<!-- Rok 2025 -->
+				<details class="group cursor-pointer">
+					<summary class="list-none text-center text-xl font-light text-purple-200/80 group-hover:text-white transition">
+						2025
+					</summary>
+					<div class="flex flex-col items-center gap-3 mt-4 py-4 bg-white/5 rounded-lg border border-white/5">
+						<a href="/tarot/mesacne/2025/januar" class="text-sm tracking-widest hover:text-red-400">- JANUÁR</a>
+						<a href="/tarot/mesacne/2025/februar" class="text-sm tracking-widest hover:text-red-400">- FEBRUÁR</a>
+						<a href="/tarot/mesacne/2025/marec" class="text-sm tracking-widest hover:text-red-400">- MAREC</a>
+					</div>
+				</details>
+
+				<!-- Rok 2026 -->
+				<details class="group cursor-pointer">
+					<summary class="list-none text-center text-xl font-light text-purple-200/80 group-hover:text-white transition">
+						2026
+					</summary>
+					<div class="flex flex-col items-center gap-3 mt-4 py-4 bg-white/5 rounded-lg border border-white/5">
+						<a href="/tarot/mesacne/2026/januar" class="text-sm tracking-widest hover:text-red-400">- JANUÁR</a>
+						<a href="/tarot/mesacne/2026/februar" class="text-sm tracking-widest hover:text-red-400">- FEBRUÁR</a>
+					</div>
+				</details>
+			</div>
+		</div>
+
+		<!-- 3. Ostatné (Button štýl) -->
+		<div class="flex flex-col items-center">
+			<h2 class="text-lg tracking-widest uppercase mb-4 font-bold">Ostatné</h2>
+			<div class="w-full h-[3px] bg-red-600 shadow-[0_0_10px_rgba(220,38,38,0.5)] mb-8"></div>
+			
+			<div class="w-full flex flex-col gap-4">
+				<a href="/tarot/ostatne/vztahy" class="w-full py-3 px-6 bg-white/5 border border-white/10 rounded-md text-center tracking-widest hover:bg-purple-600/20 hover:border-purple-500/50 transition-all">
+					VZŤAHY
+				</a>
+				<a href="/tarot/ostatne/praca" class="w-full py-3 px-6 bg-white/5 border border-white/10 rounded-md text-center tracking-widest hover:bg-purple-600/20 hover:border-purple-500/50 transition-all">
+					PRÁCA
+				</a>
+				<a href="/tarot/ostatne/zdravie" class="w-full py-3 px-6 bg-white/5 border border-white/10 rounded-md text-center tracking-widest hover:bg-purple-600/20 hover:border-purple-500/50 transition-all">
+					ZDRAVIE
+				</a>
+			</div>
+		</div>
+
+	</div>
+</MainLayout>

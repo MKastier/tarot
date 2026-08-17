@@ -1,0 +1,33 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const cards = [
+    { month: "Január", title: "Slnko", img: "/tarot/img/sun.jpg", text: "Tento mesiac bude plný energie..." },
+    { month: "Február", title: "Mesiac", img: "/tarot/img/moon.jpg", text: "Pozor na ilúzie a skryté emócie..." },
+];
+---
+
+<MainLayout title="Ročný výklad 2025">
+	<h1 class="text-3xl text-center mb-12 font-serif uppercase tracking-widest underline decoration-red-500 underline-offset-8">
+        Ročný výklad 2025
+    </h1>
+
+	<div class="space-y-24">
+		{cards.map(item => (
+			<div class="flex flex-col md:flex-row gap-12 items-center md:items-start max-w-4xl mx-auto">
+				<!-- Karta -->
+				<div class="w-64 shrink-0 shadow-[0_0_30px_rgba(0,0,0,0.5)] rounded-lg overflow-hidden">
+					<img src={item.img} alt={item.title} class="w-full h-auto" />
+				</div>
+				
+				<!-- Text -->
+				<div class="flex-1">
+					<h2 class="text-2xl font-bold text-purple-300 mb-4">{item.month}</h2>
+					<p class="text-lg leading-relaxed text-purple-50/80">
+						{item.text}
+					</p>
+				</div>
+			</div>
+		))}
+	</div>
+</MainLayout>
