@@ -2,8 +2,8 @@
 import MainLayout from '../../layouts/MainLayout.astro';
 
 const cards = [
-    { month: "Január", title: "Slnko", img: "/tarot/img/sun.jpg", text: "Tento mesiac bude plný energie..." },
-    { month: "Február", title: "Mesiac", img: "/tarot/img/moon.jpg", text: "Pozor na ilúzie a skryté emócie..." },
+    { month: "Január", title: "Slnko", img: "/tarot/img/blazon.jpg", text: "Tento mesiac bude plný energie..." },
+    { month: "Február", title: "Mesiac", img: "/tarot/img/viselec.jpg", text: "Pozor na ilúzie a skryté emócie..." },
 ];
 ---
 
@@ -13,21 +13,30 @@ const cards = [
     </h1>
 
 	<div class="space-y-24">
-		{cards.map(item => (
-			<div class="flex flex-col md:flex-row gap-12 items-center md:items-start max-w-4xl mx-auto">
-				<!-- Karta -->
-				<div class="w-64 shrink-0 shadow-[0_0_30px_rgba(0,0,0,0.5)] rounded-lg overflow-hidden">
-					<img src={item.img} alt={item.title} class="w-full h-auto" />
-				</div>
-				
-				<!-- Text -->
-				<div class="flex-1">
-					<h2 class="text-2xl font-bold text-purple-300 mb-4">{item.month}</h2>
-					<p class="text-lg leading-relaxed text-purple-50/80">
-						{item.text}
-					</p>
-				</div>
-			</div>
-		))}
-	</div>
+    {cards.map(item => (
+        <div class="flex flex-col md:flex-row gap-12 items-center md:items-start max-w-4xl mx-auto group">
+            
+            <div class="w-64 shrink-0 relative">
+                
+                <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-[2rem] blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
+
+                <div class="relative overflow-hidden rounded-[1.5rem] border border-black/30 shadow-2xl transition-transform duration-500 group-hover:scale-[1.03]">
+                    <img 
+                        src={item.img} 
+                        alt={item.title} 
+                        class="w-full h-auto block" 
+                    />
+                    
+                    <div class="absolute inset-0 ring-1 ring-inset ring-white/20 rounded-[1.5rem]"></div>
+                </div>
+            </div>
+            
+            <div class="flex-1">
+                <h2 class="text-3xl font-serif tracking-widest text-purple-300 mb-4 uppercase">{item.month}</h2>
+                <div class="h-px w-12 bg-red-600/50 mb-6"></div>
+                <p class="text-lg leading-relaxed text-purple-50/70 font-light italic">{item.text}</p>
+            </div>
+        </div>
+    ))}
+</div>
 </MainLayout>

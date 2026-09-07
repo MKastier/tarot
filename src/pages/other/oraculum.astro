@@ -1,0 +1,62 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const sections = [
+  {
+    step: "1. ROZPOZNANIE - Aké vlastnosti bude mať môj budúci partner?",
+    title: "VOZ",
+    img: "/tarot/img/the-chariot.jpg",
+    text: "Znamená, že má svoje životné opraty pevne v ruke a je veľmi rád rozprávačom svojho životného príbehu, on si ho diriguje a všetky rozhodnutia, ktoré robí sú jeho vlastné, znamená to, že má usporiadaný život, vie si rozhodiť veci tak aby fungovali, zároveň tam je taký strach, či ma pustí do toho života, či ma nebude kontrolovať..."
+  },
+  {
+    step: "2. ZRKADLENIE - Kde ho mám hľadať a koho mi bude pripomínať?",
+    title: "VEĽKŇAŽKA",
+    img: "/tarot/img/the-high-priestess.jpg",
+    text: "Hovorí mi, že to bude spojenie, ktoré budem cítiť intuitívne, nemôžem ho hľadať aktívne, veľkňažka vie, že príde vtedy kedy má a bude vedieť o ňom že je to ten pravý človek, bude mi pripomínať niekoho, s kým som ja mentálne alebo emočne prepojený a teda nebude to niečo nové, nebude to človek, na ktorého by nikto nepovedal, že by sme nemohli spolu skončiť, lebo sa povedzme bude vlastnosťami podobať na nejakú moju blízku osobu"
+  },
+  {
+    step: "3. BLOKOVANIE - Ktorá z mojich temných stránok môže tomuto spojeniu brániť? ",
+    title: "MÁG",
+    img: "/tarot/img/the-magican.jpg",
+    text: "Mám nenaplnený potenciál, ktorý sám sebe nedovolím naplniť, pretože ja mám všetky predpoklady na to, aby som bol úžasný človek a hýbal svetom, ale ako keby sa toho bojím, mne stačí, že o tom viem a nerobím žiadnu akciu voči tomu"
+  },
+  {
+    step: "4. PRIŤAHOVANIE - Ktoré z mojich vlastností budú priťahovať môjho partnera? ",
+    title: "4 MEČOV",
+    img: "/tarot/img/4-of-swords.jpg",
+    text: "-	Absolútny pokoj a oddych, ktorý ja celkovo dávam ľudom, pri mne sa nikto necíti menej cenný, ani nevyžarujem strach, som veľkorysý človek, ktorý dáva pocit bezpečia"
+  }
+];
+---
+<MainLayout title="Oraculum lásky">
+	<div class="max-w-4xl mx-auto">
+
+		<h1 class="text-3xl text-center font-serif tracking-[0.4em] uppercase mb-10 border-b border-white/10 pb-8">Oraculum Lásky</h1>
+
+        <div class="space-y-4">
+            {sections.map((item) => (
+                <div class="flex flex-col md:flex-row gap-16 items-center md:items-start">
+
+                    <div class="w-72 shrink-0 pt-8">
+                        <div class="relative group">
+                            <div class="relative rounded-[2rem] overflow-hidden border border-black shadow-[0_0_50px_rgba(192,132,252,0.5)]">
+            
+                                <img src={item.img} class="w-full h-auto block" alt={item.title} />
+  
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="flex-1 space-y-6 md:pt-24">
+                        <h1 class="text-s tracking-[0.2em] text-white/40 uppercase">{item.step}</h1>
+                        <h2 class="text-3xl font-serif text-purple-300 uppercase tracking-widest">{item.title}</h2>
+                        <p class="text-lg text-purple-50/80 leading-relaxed font-light text-justify">{item.text}</p>
+                    </div>
+    
+                </div>
+                <div class="border-b border-white/10 pb-8"></div>
+            ))}
+        </div>
+	</div>
+</MainLayout>
