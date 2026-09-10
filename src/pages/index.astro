@@ -1,12 +1,30 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+
+const annualYears = [2024, 2025, 2026, 2027];
+
+const monthlyYears = [2024, 2025, 2026, 2027];
+
+const monthPairs = [
+  { label: 'JANUÁR & FEBRUÁR', slug: 'JanFeb' },
+  { label: 'MAREC & APRÍL', slug: 'MarApr' },
+  { label: 'MÁJ & JÚN', slug: 'MayJun' },
+  { label: 'JÚL & AUGUST', slug: 'JulAug' },
+  { label: 'SEPTEMBER & OKTÓBER', slug: 'SepOct' },
+  { label: 'NOVEMBER & DECEMBER', slug: 'NovDec' },
+];
+
+const otherReadings = [
+  { title: 'Oraculum lásky', slug: 'oraculum' },
+  { title: 'Jahodový spln', slug: 'strawberry-full-moon' },
+  { title: 'Augustový spln', slug: 'august-full-moon' },
+];
 ---
+
 <MainLayout title="Domov">
 
 	<header class="text-center mt-8 mb-24">
-		<h3 class="text-3xl md:text-4xl tracking-[0.3em] font-light text-purple-100/90 uppercase">
-			Moja cesta životom
-		</h3>
+		<h3 class="text-3xl md:text-4xl tracking-[0.3em] font-light text-purple-100/90 uppercase">Moja cesta životom</h3>
 		<div class="h-[1px] w-48 bg-white/10 mx-auto mt-6"></div>
 	</header>
 
@@ -17,10 +35,9 @@ import MainLayout from '../layouts/MainLayout.astro';
 			<div class="w-full h-[3px] bg-red-600 shadow-[0_0_10px_rgba(220,38,38,0.5)] mb-8"></div>
 			
 			<div class="flex flex-col gap-6 text-xl font-light text-purple-200/80">
-				<a href="/tarot/annual/2024" class="hover:text-white hover:translate-x-2 transition-all">2024</a>
-				<a href="/tarot/annual/2025" class="hover:text-white hover:translate-x-2 transition-all">2025</a>
-				<a href="/tarot/annual/2026" class="hover:text-white hover:translate-x-2 transition-all">2026</a>
-				<a href="/tarot/annual/2027" class="hover:text-white hover:translate-x-2 transition-all">2027</a>
+				{annualYears.map((year) => (
+					<a href={`/tarot/annual/${year}`} class="hover:text-white hover:translate-x-2 transition-all">{year}</a>
+				))}
 			</div>
 		</div>
 
@@ -29,24 +46,16 @@ import MainLayout from '../layouts/MainLayout.astro';
 			<div class="w-full h-[3px] bg-red-600 shadow-[0_0_10px_rgba(220,38,38,0.5)] mb-8"></div>
 			
 			<div class="w-full space-y-4">
-				<details class="group cursor-pointer">
-					<summary class="list-none text-center text-xl font-light text-purple-200/80 group-hover:text-white transition">
-						2025
-					</summary>
-					<div class="flex flex-col items-center gap-3 mt-4 py-4 bg-white/5 rounded-lg border border-white/5">
-						<a href="/tarot/mesacne/2025/januar" class="text-sm tracking-widest hover:text-red-400">- JANUÁR</a>
-						<a href="/tarot/mesacne/2025/februar" class="text-sm tracking-widest hover:text-red-400">- FEBRUÁR</a>
-						<a href="/tarot/mesacne/2025/marec" class="text-sm tracking-widest hover:text-red-400">- MAREC</a>
-					</div>
-				</details>
-
-				<details class="group cursor-pointer">
-					<summary class="list-none text-center text-xl font-light text-purple-200/80 group-hover:text-white transition">2026</summary>
-					<div class="flex flex-col items-center gap-3 mt-4 py-4 bg-white/5 rounded-lg border border-white/5">
-						<a href="/tarot/monthly/2026/JanFeb" class="text-sm tracking-widest hover:text-red-400">JANUÁR & FEBRUÁR</a>
-						<a href="/tarot/monthly/2026/MarApr" class="text-sm tracking-widest hover:text-red-400">MAREC & APRÍL</a>
-					</div>
-				</details>
+				{monthlyYears.map((year) => (
+					<details class="group cursor-pointer">
+						<summary class="list-none text-center text-xl font-light text-purple-200/80 group-hover:text-white transition">{year}</summary>
+						<div class="flex flex-col items-center gap-3 mt-4 py-4 bg-white/5 rounded-lg border border-white/5">
+							{monthPairs.map((pair) => (
+								<a href={`/tarot/monthly/${year}/${pair.slug}`} class="text-sm tracking-widest hover:text-red-400 transition-colors">{pair.label}</a>
+							))}
+						</div>
+					</details>
+				))}
 			</div>
 		</div>
 
@@ -55,15 +64,11 @@ import MainLayout from '../layouts/MainLayout.astro';
 			<div class="w-full h-[3px] bg-red-600 shadow-[0_0_10px_rgba(220,38,38,0.5)] mb-8"></div>
 			
 			<div class="w-full flex flex-col gap-4">
-				<a href="/tarot/other/oraculum" class="w-full py-3 px-6 bg-white/5 border border-white/10 rounded-md text-center tracking-widest hover:bg-purple-600/20 hover:border-purple-500/50 transition-all">
-					Oraculum lásky
-				</a>
-				<a href="/tarot/other/strawberry-full-moon" class="w-full py-3 px-6 bg-white/5 border border-white/10 rounded-md text-center tracking-widest hover:bg-purple-600/20 hover:border-purple-500/50 transition-all">
-					Jahodový spln
-				</a>
-				<a href="/tarot/other/august-full-moon" class="w-full py-3 px-6 bg-white/5 border border-white/10 rounded-md text-center tracking-widest hover:bg-purple-600/20 hover:border-purple-500/50 transition-all">
-					Augustový spln
-				</a>
+				{otherReadings.map((reading) => (
+					<a href={`/tarot/other/${reading.slug}`} 
+						class="w-full py-3 px-6 bg-white/5 border border-white/10 rounded-md text-center tracking-widest hover:bg-purple-600/20 hover:border-purple-500/50 transition-all"
+					> {reading.title}</a>
+				))}
 			</div>
 		</div>
 
