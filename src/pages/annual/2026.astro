@@ -1,0 +1,92 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const sections = [
+  {
+    month: "ROČNÁ KARTA", title: "VEĽKŇAZ", img: "/tarot/img/the-hierophant.jpg",
+    text: "Znamená, že má svoje životné opraty pevne v ruke a je veľmi rád rozprávačom svojho životného príbehu, on si ho diriguje a všetky rozhodnutia, ktoré robí sú jeho vlastné, znamená to, že má usporiadaný život, vie si rozhodiť veci tak aby fungovali, zároveň tam je taký strach, či ma pustí do toho života, či ma nebude kontrolovať..."
+  },
+  {
+    month: "JANUÁR", title: "SILA", img: "/tarot/img/the-strength.jpg",
+    text: "Január bude také naťahovanie sa, či do niečo ísť, neísť, či niečo prekonať alebo neprekonať, čo sa týka práce tam asi len neposlať niekoho do zadku, bude ma niekto vytáčať ale mám tam takú tú pohodu, taký ten nadhľad, nie vždy to zvládnem, sila je taká, že sa premáham v čomkoľvek, či už je to škola či vo vzťahu, ak chcem niekomu povedať niečo z mosta do prosta tak to na neho vyblafnem a niekedy sa dokážem umierniť, ovplyvniť sa to nedá, ak niekomu vynadám, mal som mu vynadať, ak mám niečo urobiť tak to urobím"
+  },
+  {
+    month: "FEBRUÁR", title: "4 PALÍC", img: "/tarot/img/4-of-wands.jpg",
+    text: "Otvárajú sa mi nejaké nové dvere, ale keďže sú to palice tak to skôr súvisí s nejakými vášňami alebo energickými vecami, čiže určite nebudem veľmi rozmýšľať zbytočne, už bude po skúškach, to bude mesiac užívania si, a keďže je to 4 tak je to ako stolička, pevne si sedím na tých 4 nohách, je to niečo stabilné, vôbec sa nemám báť ak sa mi otvorí („teraz ma zabiješ“) nejaká cesta k novému vzťahu alebo niečo podobné, nemám sa tomu brániť, aj keby to bola práca, dvere mám otvorené a je na mne či ich považujme za stabilné alebo nie, Február bude taký, že sa mi môže čokoľvek naskytnúť a ja Veronča by išla do tých dverí, vidím aké sú krásne, slniečko tam svieti, energia, budem mať dobrú pohodovú náladu"
+  },
+  {
+    month: "MAREC", title: "SÚD", img: "/tarot/img/the-judgement.jpg",
+    text: "Súd je taký, že ak som niečo zlé za tento štvrť rok urobil, tak sa mi to zráta, nemám sa brániť ničomu čo spravím lebo by ten súd nemal význam. Všetko čo sa má diať v Januári a Februári tak má svoj význam, súd je aj na to aby som sám v sebe rozsúdil, čo bolo dobré a čo zlé, ale väčšinou súd nie je ten typ karty ktorá mi dáva na výber, buď ma odsúdi za to čo bolo zlé alebo mi odklepne čo som spravil dobre, čiže Marec bude taký o tom vyrovnaní, že som tak v pohode, že by ma prvý štvrť rok nemalo nič rozhádzať, ale tým súdom budem vidieť či som niečo nepokazil, ale nie je to zlé lebo na súde sa dejú aj dobré veci, odklepnú mi aj niečo dobré, („Sandruš ty? Chceš k súdu niečo povedať? K tvojej obľúbenej karte v úvodzovkách, lebo ju nevieš veľmi interpretovať.“) Súd mi môže priniesť aj dobré veci"
+  },
+  {
+    month: "APRÍL", title: "5 PALÍC", img: "/tarot/img/5-of-wands.jpg",
+    text: "5 sú krízové karty, prídu trenice, rastiem zo 4 do 5 palíc, možno mi niekto bude dohovárať alebo ma bude o niečom presviedčať, ale ja prídem do tejto 5, Ja sa pobijem za to čo mi je blízke, tu je neskutočne veľa energie v tomto štvrť roku, takej že idem bomby a neviem kde skončím, ale ofc že to myslíme v dobrom, lebo tu energiu treba prebrať, nemôžem byť stále milý, dobrý, úslužný a všetkým vyhovieť, mám byť sám sebou, pretože ja viem aké mám priority a svoje silné stránky, v apríli to bude krízovejšie, možno budem mať pocit, že nevládzem toľko bojovať o seba"
+  },
+  {
+    month: "MÁJ", title: "6 MEČOV", img: "/tarot/img/6-of-swords.jpg",
+    text: "Po búrlivom štvrť roku, respektíve 4 mesiacoch sa dostanem do totálnej pohody, ale bude to búrlivé, 6 mečov je taká ako keby vplávam do takých pokojných vôd, Budem fičať ako duracel, 6 mečová je taká že v podstate to v máji prirodzene vyplynie, že prídem do toho pokoja z tohto celého, pretože tej energie bude na mňa veľa, takže sa potrebujem nie uzemniť ale tak, že to bude pekne plynúť, keďže je to voda, ale môže to znamenať aj nejaké sťahovanie alebo nejaká zmena v tomto zmysle, nejaká zmena priestorová, čiže môže to byť aj práca aj bývanie, ale bude to trošku bolieť, pretože meče sú vždy boľavé, ale ten koniec keď to dokončím je fajn, ale v hlave sa mi uľaví, pretože prvé 4 mesiace nerozmýšľam, idem tam pudovo, máj ma určite zastaví, mám si predstaviť vlny, že ma to trošku vykmása ale dôležité je, že ma to donesie do pohody, o čom svedčí aj Eso pohárov"
+  },
+  {
+    month: "JÚN", title: "ESO POHÁROV", img: "/tarot/img/ace-of-cups.jpg",
+    text: "Toto je extrém, ja pôjdem do úplnej blaženosti, ducha, do totálnej pohody, v júni sa mi uľaví, po skúškach, z horšieho obdobia prejdem do lepšieho, tu si už budem viac užívať po ťažšom období"
+  },
+  {
+    month: "JÚL", title: "8 MEČOV", img: "/tarot/img/8-of-swords.jpg",
+    text: "Tu už neviem čo budem, tu si bránim sám sebe v niečom, pred niečím si zakrývam oči, aj by som mohol byť v pohode, aj by som mohol vykorčuľovať z nejakých problémov, ale sám sebe budem klásť prekážky pod nohy, ale v akom zmysle to zatiaľ nevieme, odkaz kariet, čokoľvek čo budem chcieť prekonať tak prekonám, toho sa nemusím báť, len musím chcieť, budú nejaké prekážky, ale robím si ich sám"
+  },
+  {
+    month: "AUGUST", title: "PÁŽA PALÍC", img: "/tarot/img/page-of-wands.jpg",
+    text: "Budú tam nejaké ani nie že zranenia, ale bude sa to týkať citov, lásky, poplačem si, páža je také ufňukané malé miminko, ale je to citlivý človek, asi to má po tomto všetkom prísť, niečo proste precitnem"
+  },
+  {
+    month: "SEPTEMBER", title: "7 MEČOV", img: "/tarot/img/7-of-wands.jpg",
+    text: "Toto nie je dobrá karta, niekto ma oklame, okradne, alebo ma sklame veľmi ale nie je to na rovine citov, keby som mal v nejakej hádke prehrať alebo v spore, môže byť o vzťahu kľudne aj o práci aj o vzťahoch v práci ale je na úrovni hlavy, mohol by to byť kľudne aj podvod v rámci vzťahu, ale nebudem to prežívať ako v auguste tak citovo, ale už sa niečomu postavím tak rozumovo, tu si budem musieť vyriešiť nejaké veci v hlave, budem musieť rozmýšľať hlavou, nie vkladať do toho vášne a city"
+  },
+  {
+    month: "OKTÓBER", title: "RYTIER POHÁROV", img: "/tarot/img/knight-of-cups.jpg",
+    text: "Utápa sa v žiali, vyzerá, že to nedám po tej rozumovej stránke, druhý polrok, je ťažší lebo budem rozhádzaný, páža aj rytier sú proste precitlivelí, nevedia spracovať veci, ktoré sa stali, na čo nadväzujú aj ďalšie karty"
+  },
+  {
+    month: "NOVEMBER", title: "5 MINCÍ", img: "/tarot/img/5-of-pentacles.jpg",
+    text: "Toto väčšinou znamená že nebudem mať peniaze, ale to nie je o tom, tu v tejto postupnosti je to o tom, že sa budem cítiť sám alebo oklamaný, nestabilný, hoci tu mám všetky živly tak ma všetky oplieskajú, niečo nezvládnem po citovej stránke, niečo si v hlave nedám dokopy, poháre sú o tom, že nedokážem ustáť a mince takisto, od augusta po november sa budem musieť popasovať s niečím, 2 sú dvorné karty, takže to odráža mňa, čiže v auguste a v októbri bojujem sám so sebou, a september a november je to s niekým, niečo mi na niekom prekáža, niekto ma sklame alebo niekto mi urobí niečo zlé, ale sú to malé karty, takže sa to vyvíja, V druhom polroku si mám uvedomiť a mám sa vrátiť do toho prvého polroka, akú som mal silu, aj keby mi čokoľvek prišlo do života tak sa mám vrátiť, aspoň mysľou, že ako som to pekne zvládol"
+  },
+  {
+    month: "DECEMBER", title: "7 MINCÍ", img: "/tarot/img/7-of-pentacles.jpg",
+    text: "Ukazuje mi, že to chce trpezlivosť, na tom ako sa rozbijem v druhom polroku, budem na tom musieť pracovať, ale December je super na to pretože mi tá trpezlivosť práce na sebe alebo na tých vzťahoch s ľuďmi, s čímkoľvek, so školou, s prácou dáva najavo, že to bude mať dobré výsledky, jednoznačne December je jasný v tom, že to dobre skončí, preje to kam nevieme ale môžem si byť istý, že tá trpezlivosť pracovať sa mi ukáže ako pozitívna"
+  }
+];
+---
+<MainLayout title="Oraculum lásky">
+	<div class="max-w-4xl mx-auto">
+
+		<h1 class="text-3xl text-center font-serif tracking-[0.4em] uppercase mb-10 border-b border-white/10 pb-8">Ročný výklad 2026</h1>
+
+        <div class="space-y-4">
+            {sections.map((item) => (
+                <div class="flex flex-col md:flex-row gap-16 items-center md:items-start">
+
+                    <div class="w-72 shrink-0 pt-8">
+                        <div class="relative group">
+                            <div class="relative rounded-[2rem] overflow-hidden border border-black shadow-[0_0_50px_rgba(192,132,252,0.5)]">
+            
+                                <img src={item.img} class="w-full h-auto block" alt={item.title} />
+  
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="flex-1 space-y-6 md:pt-24">
+                        <h1 class="text-2xl tracking-[0.2em] text-white/40 uppercase text-center">{item.month}</h1>
+                        <div class="h-px w-8 bg-white/10 mx-auto mb-12"></div>
+                        <h2 class="text-3xl font-serif text-purple-300 uppercase tracking-widest text-center">{item.title}</h2>
+                        <div class="space-y-4 text-base md:text-lg leading-relaxed text-purple-100/85 font-light text-left"></div>
+                        <p class="text-lg text-purple-50/80 leading-relaxed font-light text-justify">{item.text}</p>
+                    </div>
+    
+                </div>
+                <div class="border-b border-white/10 pb-8"></div>
+            ))}
+        </div>
+	</div>
+</MainLayout>
