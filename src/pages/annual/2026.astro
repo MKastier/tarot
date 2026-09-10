@@ -4,7 +4,7 @@ import MainLayout from '../../layouts/MainLayout.astro';
 const sections = [
   {
     month: "ROČNÁ KARTA", title: "VEĽKŇAZ", img: "/tarot/img/the-hierophant.jpg",
-    text: "Znamená, že má svoje životné opraty pevne v ruke a je veľmi rád rozprávačom svojho životného príbehu, on si ho diriguje a všetky rozhodnutia, ktoré robí sú jeho vlastné, znamená to, že má usporiadaný život, vie si rozhodiť veci tak aby fungovali, zároveň tam je taký strach, či ma pustí do toho života, či ma nebude kontrolovať..."
+    text: "Veľmi dobrá karta, taká umiernená, že už som teda vysporiadaný s vecami, že už v tom živote som si niečo prešiel a som s tým v pohode, to súvisí aj s tým, že prichádzame to 1-tkového roka, čiže ak som si dobre pouzatváral a vysporiadal som sa v starom roku s vecami tak sa mi v budúcom bude ľahšie žiť (čo sa týka školy, práce, vzťahu ako som si to nastavil), -	Človek, ktorý je vyrovnaný, ktorý je v pohode, ktorý nemá extrémne stresy z ničoho a on najlepšie vie ako mu je v sebe samom, -	Je to vysoká karta, nie je to premennné, je to taká jasná vec"
   },
   {
     month: "JANUÁR", title: "SILA", img: "/tarot/img/the-strength.jpg",
@@ -39,7 +39,7 @@ const sections = [
     text: "Budú tam nejaké ani nie že zranenia, ale bude sa to týkať citov, lásky, poplačem si, páža je také ufňukané malé miminko, ale je to citlivý človek, asi to má po tomto všetkom prísť, niečo proste precitnem"
   },
   {
-    month: "SEPTEMBER", title: "7 MEČOV", img: "/tarot/img/7-of-wands.jpg",
+    month: "SEPTEMBER", title: "7 MEČOV", img: "/tarot/img/7-of-swords.jpg",
     text: "Toto nie je dobrá karta, niekto ma oklame, okradne, alebo ma sklame veľmi ale nie je to na rovine citov, keby som mal v nejakej hádke prehrať alebo v spore, môže byť o vzťahu kľudne aj o práci aj o vzťahoch v práci ale je na úrovni hlavy, mohol by to byť kľudne aj podvod v rámci vzťahu, ale nebudem to prežívať ako v auguste tak citovo, ale už sa niečomu postavím tak rozumovo, tu si budem musieť vyriešiť nejaké veci v hlave, budem musieť rozmýšľať hlavou, nie vkladať do toho vášne a city"
   },
   {
@@ -56,7 +56,7 @@ const sections = [
   }
 ];
 ---
-<MainLayout title="Oraculum lásky">
+<MainLayout title="Ročný výklad">
 	<div class="max-w-4xl mx-auto">
 
 		<h1 class="text-3xl text-center font-serif tracking-[0.4em] uppercase mb-10 border-b border-white/10 pb-8">Ročný výklad 2026</h1>
@@ -65,7 +65,7 @@ const sections = [
             {sections.map((item) => (
                 <div class="flex flex-col md:flex-row gap-16 items-center md:items-start">
 
-                    <div class="w-72 shrink-0 pt-8">
+                    <div class="w-72 shrink-0 pt-8 md:sticky md:top-28 self-start">
                         <div class="relative group">
                             <div class="relative rounded-[2rem] overflow-hidden border border-black shadow-[0_0_50px_rgba(192,132,252,0.5)]">
             
@@ -81,7 +81,10 @@ const sections = [
                         <div class="h-px w-8 bg-white/10 mx-auto mb-12"></div>
                         <h2 class="text-3xl font-serif text-purple-300 uppercase tracking-widest text-center">{item.title}</h2>
                         <div class="space-y-4 text-base md:text-lg leading-relaxed text-purple-100/85 font-light text-left"></div>
-                        <p class="text-lg text-purple-50/80 leading-relaxed font-light text-justify">{item.text}</p>
+                        
+                        <div class="space-y-4 text-base md:text-lg leading-relaxed text-purple-100/85 font-light text-left">
+                            {item.text}
+                        </div>
                     </div>
     
                 </div>
