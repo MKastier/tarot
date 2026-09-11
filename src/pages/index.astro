@@ -1,76 +1,199 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
+import MainLayout from "../layouts/MainLayout.astro";
 
 const annualYears = [2024, 2025, 2026, 2027];
 
 const monthlyYears = [2024, 2025, 2026, 2027];
 
 const monthPairs = [
-  { label: 'JANUÁR & FEBRUÁR', slug: 'JanFeb' },
-  { label: 'MAREC & APRÍL', slug: 'MarApr' },
-  { label: 'MÁJ & JÚN', slug: 'MayJun' },
-  { label: 'JÚL & AUGUST', slug: 'JulAug' },
-  { label: 'SEPTEMBER & OKTÓBER', slug: 'SepOct' },
-  { label: 'NOVEMBER & DECEMBER', slug: 'NovDec' },
+	{ label: "JANUÁR & FEBRUÁR", slug: "JanFeb" },
+	{ label: "MAREC & APRÍL", slug: "MarApr" },
+	{ label: "MÁJ & JÚN", slug: "MayJun" },
+	{ label: "JÚL & AUGUST", slug: "JulAug" },
+	{ label: "SEPTEMBER & OKTÓBER", slug: "SepOct" },
+	{ label: "NOVEMBER & DECEMBER", slug: "NovDec" },
 ];
 
-const otherReadings = [
-  { title: 'Oraculum lásky', slug: 'oraculum' },
+const fullMoonReadings = [
   { title: 'Jahodový spln', slug: 'strawberry-full-moon' },
   { title: 'Augustový spln', slug: 'august-full-moon' },
+  { title: 'Septembrový spln', slug: 'september-full-moon' },
+];
+
+
+const standaloneReadings = [
+  { title: 'Oraculum lásky', slug: 'oraculum' },
+  { title: 'Podkova', slug: 'podkova' },
 ];
 ---
 
 <MainLayout title="Domov">
-
-	<header class="text-center mt-8 mb-24">
-		<h3 class="text-3xl md:text-4xl tracking-[0.3em] font-light text-purple-100/90 uppercase">Moja cesta životom</h3>
-		<div class="h-[1px] w-48 bg-white/10 mx-auto mt-6"></div>
+	<header class="text-center mt-4 mb-16 md:mb-20">
+		<h3
+			class="text-3xl md:text-5xl tracking-[0.35em] font-light text-purple-100/95 uppercase font-serif drop-shadow-[0_2px_15px_rgba(168,85,247,0.25)]"
+		>
+			Moja cesta životom
+		</h3>
+		<div
+			class="h-[1px] w-56 bg-gradient-to-r from-transparent via-amber-400/50 to-transparent mx-auto mt-6"
+		>
+		</div>
 	</header>
 
-	<div class="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 items-start">
-		
-		<div class="flex flex-col items-center">
-			<h2 class="text-lg tracking-widest uppercase mb-4 font-bold">Ročné výklady</h2>
-			<div class="w-full h-[3px] bg-red-600 shadow-[0_0_10px_rgba(220,38,38,0.5)] mb-8"></div>
-			
-			<div class="flex flex-col gap-6 text-xl font-light text-purple-200/80">
-				{annualYears.map((year) => (
-					<a href={`/tarot/annual/${year}`} class="hover:text-white hover:translate-x-2 transition-all">{year}</a>
-				))}
+	<div
+		class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 items-start max-w-6xl mx-auto"
+	>
+		<div class="flex flex-col items-center w-full">
+			<h2
+				class="text-sm md:text-base tracking-[0.3em] uppercase mb-3 font-serif font-medium text-amber-300/90"
+			>
+				Ročné výklady
+			</h2>
+			<div
+				class="w-full h-[1px] bg-gradient-to-r from-transparent via-purple-400/30 to-transparent mb-8"
+			>
+			</div>
+
+			<div class="w-full flex flex-col gap-3.5">
+				{
+					annualYears.map((year) => (
+						<a
+							href={`/tarot/annual/${year}`}
+							class="group relative w-full py-3.5 px-6 rounded-xl text-center font-serif text-lg tracking-widest text-purple-100/90 
+						       bg-white/[0.03] border border-white/10 backdrop-blur-sm shadow-sm
+						       hover:bg-white/[0.08] hover:border-amber-400/40 hover:text-amber-200 hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(245,158,11,0.15)]
+						       transition-all duration-300"
+						>
+							<span>{year}</span>
+						</a>
+					))
+				}
 			</div>
 		</div>
 
-		<div class="flex flex-col items-center">
-			<h2 class="text-lg tracking-widest uppercase mb-4 font-bold">Mesačné výklady</h2>
-			<div class="w-full h-[3px] bg-red-600 shadow-[0_0_10px_rgba(220,38,38,0.5)] mb-8"></div>
-			
-			<div class="w-full space-y-4">
-				{monthlyYears.map((year) => (
-					<details class="group cursor-pointer">
-						<summary class="list-none text-center text-xl font-light text-purple-200/80 group-hover:text-white transition">{year}</summary>
-						<div class="flex flex-col items-center gap-3 mt-4 py-4 bg-white/5 rounded-lg border border-white/5">
-							{monthPairs.map((pair) => (
-								<a href={`/tarot/monthly/${year}/${pair.slug}`} class="text-sm tracking-widest hover:text-red-400 transition-colors">{pair.label}</a>
-							))}
-						</div>
-					</details>
-				))}
+		<div class="flex flex-col items-center w-full">
+			<h2
+				class="text-sm md:text-base tracking-[0.3em] uppercase mb-3 font-serif font-medium text-amber-300/90"
+			>
+				Mesačné výklady
+			</h2>
+			<div
+				class="w-full h-[1px] bg-gradient-to-r from-transparent via-purple-400/30 to-transparent mb-8"
+			>
+			</div>
+
+			<div class="w-full space-y-3.5">
+				{
+					monthlyYears.map((year) => (
+						<details class="group cursor-pointer">
+							<summary
+								class="list-none flex items-center justify-between py-3.5 px-6 rounded-xl font-serif text-lg tracking-widest text-purple-100/90 
+						               bg-white/[0.03] border border-white/10 backdrop-blur-sm 
+						               group-hover:bg-white/[0.08] group-hover:border-purple-400/40 group-open:border-amber-400/50 group-open:bg-white/[0.06] group-open:text-amber-200
+						               transition-all duration-300 select-none"
+							>
+								<span class="mx-auto pl-5">{year}</span>
+								<svg
+									class="w-4 h-4 text-purple-300/60 transition-transform duration-300 group-open:rotate-180 group-open:text-amber-300"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M19 9l-7 7-7-7"
+									/>
+								</svg>
+							</summary>
+
+							<div class="flex flex-col gap-2 mt-2 p-3 bg-black/25 rounded-xl border border-white/5 backdrop-blur-md">
+								{monthPairs.map((pair) => (
+									<a
+										href={`/tarot/monthly/${year}/${pair.slug}`}
+										class="py-2.5 px-4 rounded-lg text-xs tracking-[0.2em] uppercase font-light text-purple-200/75 text-center
+									       hover:bg-purple-500/20 hover:text-amber-200 hover:border-amber-400/20 border border-transparent
+									       transition-all duration-200"
+									>
+										{pair.label}
+									</a>
+								))}
+							</div>
+						</details>
+					))
+				}
 			</div>
 		</div>
 
-		<div class="flex flex-col items-center">
-			<h2 class="text-lg tracking-widest uppercase mb-4 font-bold">Ostatné výklady</h2>
-			<div class="w-full h-[3px] bg-red-600 shadow-[0_0_10px_rgba(220,38,38,0.5)] mb-8"></div>
-			
-			<div class="w-full flex flex-col gap-4">
-				{otherReadings.map((reading) => (
-					<a href={`/tarot/other/${reading.slug}`} 
-						class="w-full py-3 px-6 bg-white/5 border border-white/10 rounded-md text-center tracking-widest hover:bg-purple-600/20 hover:border-purple-500/50 transition-all"
-					> {reading.title}</a>
-				))}
+		<div class="flex flex-col items-center w-full">
+			<h2
+				class="text-sm md:text-base tracking-[0.3em] uppercase mb-3 font-serif font-medium text-amber-300/90"
+			>
+				Ostatné výklady
+			</h2>
+			<div
+				class="w-full h-[1px] bg-gradient-to-r from-transparent via-purple-400/30 to-transparent mb-8"
+			>
+			</div>
+
+			<div class="w-full flex flex-col gap-3.5">
+				<details class="group cursor-pointer">
+					<summary
+						class="list-none flex items-center justify-between py-3.5 px-6 rounded-xl font-serif text-lg tracking-widest text-purple-100/90
+                           bg-white/[0.03] border border-white/10 backdrop-blur-sm shadow-sm
+                           group-hover:bg-white/[0.08] group-hover:border-purple-400/40
+                           group-open:border-amber-400/50 group-open:bg-white/[0.06] group-open:text-amber-200
+                           transition-all duration-300 select-none"
+					>
+						<span class="mx-auto pl-5">Splny</span>
+
+						<svg
+							class="w-4 h-4 text-purple-300/60 transition-transform duration-300 group-open:rotate-180 group-open:text-amber-300"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M19 9l-7 7-7-7"></path>
+						</svg>
+					</summary>
+
+					<div
+						class="flex flex-col gap-2 mt-2 p-3 bg-black/25 rounded-xl border border-white/5 backdrop-blur-md"
+					>
+						{
+							fullMoonReadings.map((moon) => (
+								<a
+									href={`/tarot/other/${moon.slug}`}
+									class="py-2.5 px-4 rounded-lg text-xs tracking-[0.2em] uppercase font-light text-purple-200/75 text-center
+                               hover:bg-purple-500/20 hover:text-amber-200 hover:border-amber-400/20 border border-transparent
+                               transition-all duration-200"
+								>
+									{moon.title}
+								</a>
+							))
+						}
+					</div>
+				</details>
+
+				{
+					standaloneReadings.map((reading) => (
+						<a
+							href={`/tarot/other/${reading.slug}`}
+							class="group relative w-full py-3.5 px-6 rounded-xl text-center tracking-widest text-xs md:text-sm uppercase font-light text-purple-100/90 
+                       bg-white/[0.03] border border-white/10 backdrop-blur-sm shadow-sm
+                       hover:bg-white/[0.08] hover:border-amber-400/40 hover:text-amber-200 hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(245,158,11,0.15)]
+                       transition-all duration-300"
+						>
+							{reading.title}
+						</a>
+					))
+				}
 			</div>
 		</div>
-
 	</div>
 </MainLayout>
